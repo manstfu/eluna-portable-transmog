@@ -14,3 +14,13 @@ INSERT INTO `item_template` (`entry`, `class`, `subclass`, `SoundOverrideSubclas
 -- Placeholder should be renamed and populated with item name that essence was extracted, onuser login?
 (TBD, 0, 6, -1, 'Essence of Placeholder', 6270, 4, 268435520, 0, 1, 0, 0, 0, -1, -1, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, '|cff0BF917Use: Apply Placeholder appearance to another item.|r', 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 1);
 
+
+-- Track extracted Essences, and replace Placeholder with `original_item_name` on user login.
+
+CREATE TABLE IF NOT EXISTS `essence_tracking` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,             -- Unique ID for each record
+    `essence_item_id` INT NOT NULL,                  -- ID of the essence item from 'item_instance'
+    `original_item_name` VARCHAR(255) NOT NULL,      -- Name of the original item
+    `owner_guid` INT NOT NULL,                       -- GUID of the owning character
+    `applied` TINYINT(1) NOT NULL DEFAULT 0          -- Indicates if the essence has been applied
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
