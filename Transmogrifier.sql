@@ -22,5 +22,5 @@ CREATE TABLE IF NOT EXISTS `essence_tracking` (
     `essence_item_id` INT NOT NULL,                  -- ID of the essence item from 'item_instance'
     `original_item_name` VARCHAR(255) NOT NULL,      -- Name of the original item
     `owner_guid` INT NOT NULL,                       -- GUID of the owning character
-    `applied` TINYINT(1) NOT NULL DEFAULT 0          -- Indicates if the essence has been applied
+    --`applied` TINYINT(1) NOT NULL DEFAULT 0          -- Indicates if the essence has been applied; Not needed anymore essence must be cleared from the table.
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
